@@ -1,9 +1,10 @@
 import modules as dft
-init_coeffs = []
-res_coeffs = []
-w_coeffs = []
 
 n = int(input("Enter n: "))
+
+init_coeffs = []
+res_coeffs = [0] * n
+w_coeffs = []
 
 for i in range(n):
     temp = complex(input(f"\tcoeff of x^{i}: "))
@@ -12,7 +13,7 @@ for i in range(n):
 
 for i in range(n):
     for j in range(n):
-        tmp_coeffs =[]
+        tmp_coeffs =[0] * n
         tmp_coeffs[j] =  init_coeffs[j] * (w_coeffs[i])**j
     res_coeffs[i] = sum(tmp_coeffs)
 
