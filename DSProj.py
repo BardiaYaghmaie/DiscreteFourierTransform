@@ -1,28 +1,22 @@
-#! usr/bin/env python3
-import modules as m
+import modules as dft
+init_coeffs = []
+res_coeffs = []
+w_coeffs = []
 
-a_poly_coeffs = []
-n = int(input("Enter n:"))
-
-print(f"Enter {n} numbers as coefficients of polynomial: ")
-
-for i in range(n):
-    tmp = m.Complex(input())
-    a_poly_coeffs.append(tmp)
-    
-b_poly_coeffs = []
+n = int(input("Enter n: "))
 
 for i in range(n):
-    x = m.Complex('0+0i')
+    temp = complex(input(f"\tcoeff of x^{i}: "))
+    init_coeffs.append(temp)
+    w_coeffs.append(dft.w(i,n)) 
+
+for i in range(n):
     for j in range(n):
-        w = m.w(i, j, n)
-        # x += a_poly_coeffs[j] * w
-        x = x.c_sum(a_poly_coeffs[j].c_product(w))
+        tmp_coeffs =[]
+        tmp_coeffs[j] =  init_coeffs[j] * (w_coeffs[i])**j
+    res_coeffs[i] = sum(tmp_coeffs)
 
-    b_poly_coeffs.append(x)
-
-print(b_poly_coeffs[0])
-
+print(res_coeffs)
 
 
 
